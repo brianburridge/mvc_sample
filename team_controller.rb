@@ -1,13 +1,15 @@
 class Controller
+  @@team = nil
 
   def self.cheer
-    Controller.prompt_for_team_info if @team == nil
-    TeamView.cheer(@team)
+    puts define? @@team
+    Controller.prompt_for_team_info if @@team == nil
+    TeamView.cheer(@@team)
   end
 
   def self.announce_win
-    Controller.prompt_for_team_info if @team == nil
-    TeamView.announce_win(@team)
+    Controller.prompt_for_team_info if @@team == nil
+    TeamView.announce_win(@@team)
   end
 
   private
@@ -19,8 +21,8 @@ class Controller
     print "Please enter your team's home town: "
     home_town = $stdin.gets.strip
 
-    @team = Team.new
-    @team.team_name = team_name
-    @team.home_town = home_town
+    @@team = Team.new
+    @@team.team_name = team_name
+    @@team.home_town = home_town
   end
 end
