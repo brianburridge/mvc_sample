@@ -2,7 +2,7 @@ class Controller
   @@team = nil
 
   def self.cheer
-    puts define? @@team
+    puts defined? @@team
     Controller.prompt_for_team_info if @@team == nil
     TeamView.cheer(@@team)
   end
